@@ -34,7 +34,12 @@ export default class Nav extends Component {
                 <Menu.Item key="product" icon={<HeartTwoTone />} style={{fontSize : '20px'}}>
                     <Link to='/product'>添加商品</Link>
                 </Menu.Item>
-                <Menu.Item key='cart'  icon={<ShoppingCartOutlined  style={{fontSize : '30px',}}/>} style={{fontSize : '25px', marginBottom:'2px', transform: 'translateY(2px)', float:'right',position:'relative'}}>
+                <Menu.Item key="user" style={{fontSize : '20px',float:'right'}}>
+                    <Avatar size='small' src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1558022566,848686799&fm=26&gp=0.jpg" />
+                    用户
+                    <Link to='/'></Link>
+                </Menu.Item>
+                <Menu.Item key='cart'  icon={<ShoppingCartOutlined  style={{fontSize : '30px',}}/>} style={{fontSize : '25px', transform: 'translateY(3px)', float:'right',position:'relative'}}>
                     <Button type="primary" 
                         shape="round" 
                         size='small' 
@@ -51,11 +56,6 @@ export default class Nav extends Component {
                         }}
                     >{count}</Button>
                     <Link to='/order'></Link>
-                </Menu.Item>
-                <Menu.Item key="user" style={{fontSize : '20px',float:'right'}}>
-                    <Avatar size='small' src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1558022566,848686799&fm=26&gp=0.jpg" />
-                    用户
-                    <Link to='/'></Link>
                 </Menu.Item>
             </Menu>
         );

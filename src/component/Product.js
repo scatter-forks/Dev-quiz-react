@@ -1,81 +1,36 @@
 import React, { Component } from 'react'
-import { Input, Tooltip, Button } from 'antd';
-import { InfoCircleOutlined, UserOutlined, AreaChartOutlined, AccountBookOutlined, FieldStringOutlined } from '@ant-design/icons';
+import { Card,  Col, Rate, } from 'antd';
+import { createFromIconfontCN as IconFont } from '@ant-design/icons';
+
+const { Meta } = Card;
+const Icon = IconFont({
+    scriptUrl: [
+        '//at.alicdn.com/t/font_1874562_iwoj7kz2ysk.js'
+      ],
+})
 
 export default class Product extends Component {
     render() {
-        return (
-            <div style={{marginTop:'30px'}}>
-                <h1 style={{
-                    fontWeight:'700',
-                    display: 'inline-block',
-                    transform: 'translateX(-50%)',
-                    marginLeft: '50%',
-                }}>
-                    添加商品
-                </h1>
-                <h3 style={{fontWeight:'700'}}>*类别</h3>
-                <Input
-                    placeholder="Enter your product category: book or toy"
-                    prefix={<UserOutlined className="site-form-item-icon" />}
-                    suffix={
-                        <Tooltip title="Extra information">
-                        <InfoCircleOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
-                        </Tooltip>
-                    }
-                />
-                <br />
-                <br />
-                <h3 style={{fontWeight:'700'}}>*名称</h3>
-                <Input
-                    placeholder="Enter your product name"
-                    prefix={<UserOutlined className="site-form-item-icon" />}
-                    suffix={
-                        <Tooltip title="Extra information">
-                        <InfoCircleOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
-                        </Tooltip>
-                    }
-                />
-                <br />
-                <br />
-                <h3 style={{fontWeight:'700'}}>*价格</h3>
-                <Input prefix={<AccountBookOutlined />} 
-                    placeholder="Enter your product price"
-                    suffix="RMB" />
-                <br />
-                <br />
-                <h3 style={{fontWeight:'700'}}>*单位</h3>
-                <Input prefix={<FieldStringOutlined />} 
-                    placeholder="Enter your product unit"
-                    suffix={
-                        <Tooltip title="Extra information">
-                        <InfoCircleOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
-                        </Tooltip>
-                } />
-                <br />
-                <br />
-                <h3 style={{fontWeight:'700'}}>*图片</h3>
-                <Input prefix={<AreaChartOutlined />} 
-                    placeholder="Enter your product pic url"
-                    suffix="URL" />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <Button type="primary" shape="round" size='large' style={
-                    {
-                        display: 'inline-block',
-                        width: '200px',
-                        transform: 'translateX(-50%)',
-                        marginLeft: '50%',
-                        marginBottom: '200px'
-                    }
-                } >
-                    Submit
-                </Button>
-            </div>
+        const {product, addProduct} = this.props
+        return(
+            product.map(item =>{
+                return (
+                    <Col className="gutter-row" span={6} offset={0} xxl={true} >
+                        <Card
+                            hoverable
+                            style={{ width: 240 }}
+                            cover={<img alt="example" src={item.src} />}>
+                            <Meta title={item.title} description={item.description} />
+                            <Rate allowHalf disabled defaultValue={4.5} style={{marginTop:'5px'}}/>
+                            <div style={{fontSize:'30px',display:'flex',justifyContent:'center', alignItems:'baseline'}}>
+                                <Icon type="icon-money" style={{float:'left'}}/>
+                                <span style={{fontSize:'40px',margin:'0 22px', color:'red'}}>{item.price}</span>
+                                <Icon type="icon-zengjia"style={{float:'right'}} onClick={addProduct}/>
+                            </div>
+                        </Card>
+                    </Col>
+                )
+            })
         )
     }
 }
