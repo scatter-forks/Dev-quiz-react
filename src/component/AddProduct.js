@@ -6,10 +6,11 @@ export default class AddProduct extends Component {
 
     state = {
         name: "",
-        price: null,
+        price: "",
         unit: "",
         imgUrl:"",
         category:"",
+        description:"",
     }
 
     onChange = (event) =>{
@@ -31,13 +32,13 @@ export default class AddProduct extends Component {
                 if (response.ok) {
                     return Promise.resolve();
                 }
-                return Promise.reject(new Error(response.status + response.statusText));
+                return Promise.reject();
             })
             .then(() => {
                 message.success('添加成功')
             })
-            .catch((err) => {
-                console.error(err);
+            .catch(() => {
+                message.error('添加失败')
         });
     }
 
@@ -70,6 +71,20 @@ export default class AddProduct extends Component {
                 <h3 style={{fontWeight:'700'}}>*名称</h3>
                 <Input
                     id='name'
+                    onChange={this.onChange}
+                    placeholder="Enter your product name"
+                    prefix={<UserOutlined className="site-form-item-icon" />}
+                    suffix={
+                        <Tooltip title="Extra information">
+                        <InfoCircleOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
+                        </Tooltip>
+                    }
+                />
+                <br />
+                <br />
+                <h3 style={{fontWeight:'700'}}>*描述</h3>
+                <Input
+                    id='description'
                     onChange={this.onChange}
                     placeholder="Enter your product name"
                     prefix={<UserOutlined className="site-form-item-icon" />}
@@ -119,11 +134,11 @@ export default class AddProduct extends Component {
                         width: '200px',
                         transform: 'translateX(-50%)',
                         marginLeft: '50%',
-                        marginBottom: '200px'
+                        marginBottom: '100px'
                         }
                     }  
                     onClick={this.submitProduct}
-                    disabled={!this.state.name || !this.state.category || !this.state.price || !this.state.unit|| !this.state.imgUrl}
+                    disabled={!this.state.name || !this.state.category || !this.state.price || !this.state.unit|| !this.state.imgUrl || !this.state.description}
                 >
                     Submit
                 </Button>

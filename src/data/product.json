@@ -1,7 +1,7 @@
 {
     "book": [
         {
-            "title":"康熙-测试",
+            "title":"康熙",
             "description":"康熙王朝的起起伏伏",
             "src": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1986239545,3915630820&fm=15&gp=0.jpg",
             "price":"33.9",
@@ -31,7 +31,7 @@
     ],
     "toy":[
         {
-            "title":"粉红喵-测试",
+            "title":"粉红喵",
             "description":"一个粉红的童年",
             "src": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1136943329,559028985&fm=15&gp=0.jpg",
             "price":"48",
