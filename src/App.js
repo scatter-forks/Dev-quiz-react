@@ -28,7 +28,6 @@ addProduct = () => {
 }
 
   render() {
-    console.log(productInfo);
     return (
       <div>
         <Router>
